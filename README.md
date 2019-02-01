@@ -36,6 +36,9 @@ After that, you can start hadoop using following commands.
 start-dfs.sh
 start-yarn.sh
 
+This starts NameNode and SecondaryNameNode on node-master and DataNode on node1 and node2.
+Checkout http://node-master-IP:50070
+
 
 Use the 'jps' tool to check if it is running
 
