@@ -73,6 +73,22 @@ rm -R hadoop-2.9.0
 
 
 echo ""
+echo "Now script is updating Bashrc for export Path etc"  
+
+cat >> ~/.bashrc <<EOF 
+export HADOOP_HOME=/usr/local/hadoop  
+export HADOOP_MAPRED_HOME=/usr/local/hadoop  
+export HADOOP_COMMON_HOME=/usr/local/hadoop  
+export HADOOP_HDFS_HOME=/usr/local/hadoop  
+export YARN_HOME=/usr/local/hadoop  
+export HADOOP_COMMON_LIB_NATIVE_DIR=/usr/local/hadoop/lib/native  
+export JAVA_HOME=/usr/  
+export PATH=$PATH:/usr/local/hadoop/sbin:/usr/local/hadoop/bin:$JAVA_PATH/bin  
+EOF
+
+source ~/.bashrc 
+
+echo ""
 echo "Copying my version of $HADOOP_HOME/etc/hadoop/core-site.xml"
 echo "Note: using '/app/hadoop/tmp' as directory"
 cp /home/zarco/hadoop-stuff/hadoop-conf-files/core-site.xml /usr/local/hadoop/etc/hadoop/core-site.xml 
