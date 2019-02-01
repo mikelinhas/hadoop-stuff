@@ -16,7 +16,7 @@ echo "Bash Script for Installing Sun Java for Ubuntu!"
 echo ""
 echo ""
 echo "Now Script will try to purge OpenJdk if installed..."
-# purge openjdk if installed to remove conflict  
+purge openjdk if installed to remove conflict  
 apt-get purge openjdk-\* -y  
 
 
@@ -38,8 +38,8 @@ apt-get update -y
 
 echo ""
 echo "Installing Sun Java....."  
-#sudo -E apt-get purge oracle-java8-installer -y  
-#sudo -E apt-get install oracle-java8-installer -y  
+sudo -E apt-get purge oracle-java8-installer -y  
+sudo -E apt-get install oracle-java8-installer -y  
 
 echo ""
 echo "Installation completed...."
@@ -64,12 +64,12 @@ cat ~/.ssh/id_dsa.pub > ~/.ssh/authorized_keys
 echo ""
 echo "Download and extract HADOOP"
 cd /usr/local  
-#sudo wget http://apache.rediris.es/hadoop/core/hadoop-2.9.0/hadoop-2.9.0.tar.gz
+sudo wget http://apache.rediris.es/hadoop/core/hadoop-2.9.0/hadoop-2.9.0.tar.gz
 tar xzf hadoop-2.9.0.tar.gz  
 mkdir hadoop  
 mv hadoop-2.9.0/* hadoop/
 chown -R hduser:hadoop hadoop
-#rm -R hadoop-2.9.0  
+rm -R hadoop-2.9.0  
 
 
 echo ""
