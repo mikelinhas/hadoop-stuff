@@ -51,16 +51,6 @@ echo "Installed java version is...."
 java -version  
 
 
-apt-get install openssh-server -y  
-/etc/init.d/ssh status  
-/etc/init.d/ssh start  
-
-ssh-keyscan -H localhost > ~/.ssh/known_hosts  
-yes | ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
-cat ~/.ssh/id_dsa.pub > ~/.ssh/authorized_keys  
-# TODO: Should I connect to localhost?  
-
-
 echo ""
 echo "Download and extract HADOOP"
 cd /usr/local  
@@ -93,13 +83,6 @@ echo "Copying my version of $HADOOP_HOME/etc/hadoop/core-site.xml"
 echo "Note: using '/app/hadoop/tmp' as directory"
 cp /home/zarco/hadoop-stuff/hadoop-conf-files/core-site.xml /usr/local/hadoop/etc/hadoop/core-site.xml 
 
-echo ""
-echo "Making directory '/app/hadoop/tmp'"
-cd /usr/local/hadoop/etc/hadoop
-mkdir -p /app/hadoop/tmp
-chown -R hduser:hadoop /app/hadoop/tmp
-chmod 750 /app/hadoop/tmp
-
 
 echo ""
 echo "Copying my version of $HADOOP_HOME/etc/hadoop/mapred-site.xml"
@@ -114,6 +97,10 @@ cp /home/zarco/hadoop-stuff/hadoop-conf-files/hdfs-site.xml /usr/local/hadoop/et
 echo ""
 echo "Copying my version of $HADOOP_HOME/etc/hadoop/yarn-site.xml"
 cp /home/zarco/hadoop-stuff/hadoop-conf-files/yarn-site.xml /usr/local/hadoop/etc/hadoop/yarn-site.xml
+
+echo ""
+echo "Copying my version of $HADOOP_HOME/etc/hadoop/slaves"
+cp /home/zarco/hadoop-stuff/hadoop-conf-files/slaves /usr/local/hadoop/etc/hadoop/slaves
 
 echo ""
 echo "Changing ownership of all new files"
@@ -156,7 +143,11 @@ echo "stop-dfs.sh"
 echo "stop-yarn.sh"  
 
 echo "" 
-echo "Note: Cluster is not configured yet. Must change '/etc/hosts' and '/hadoop/slaves'"
+echo "Note: Cluster is not configured yet. Must change '/etc/hosts'"
+echo "" 
+
+echo "" 
+echo "Note: ssh is not configured either..."
 echo "" 
 
 echo "DON'T FORGET TO ADD JAVA PATH MANUALLY TO '$HADOOP_HOME/etc/hadoop/hadoop-env.sh'"
